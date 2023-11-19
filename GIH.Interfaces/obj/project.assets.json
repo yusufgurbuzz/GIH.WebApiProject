@@ -1,0 +1,89 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "GIH.Entities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/GIH.Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GIH.Entities.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GIH.Entities/1.0.0": {
+      "type": "project",
+      "path": "../GIH.Entities/GIH.Entities.csproj",
+      "msbuildProject": "../GIH.Entities/GIH.Entities.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "GIH.Entities >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\yusuf.gurbuz\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\yusuf.gurbuz\\Desktop\\GIHWebApiProject\\GIH.WebApi\\GIH.Interfaces\\GIH.Interfaces.csproj",
+      "projectName": "GIH.Interfaces",
+      "projectPath": "C:\\Users\\yusuf.gurbuz\\Desktop\\GIHWebApiProject\\GIH.WebApi\\GIH.Interfaces\\GIH.Interfaces.csproj",
+      "packagesPath": "C:\\Users\\yusuf.gurbuz\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yusuf.gurbuz\\Desktop\\GIHWebApiProject\\GIH.WebApi\\GIH.Interfaces\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\yusuf.gurbuz\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "C:\\Users\\yusuf.gurbuz\\Desktop\\GIHWebApiProject\\GIH.WebApi\\GIH.Entities\\GIH.Entities.csproj": {
+              "projectPath": "C:\\Users\\yusuf.gurbuz\\Desktop\\GIHWebApiProject\\GIH.WebApi\\GIH.Entities\\GIH.Entities.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

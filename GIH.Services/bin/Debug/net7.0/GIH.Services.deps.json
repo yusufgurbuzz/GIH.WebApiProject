@@ -1,0 +1,49 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "GIH.Services/1.0.0": {
+        "dependencies": {
+          "GIH.Interfaces": "1.0.0"
+        },
+        "runtime": {
+          "GIH.Services.dll": {}
+        }
+      },
+      "GIH.Entities/1.0.0": {
+        "runtime": {
+          "GIH.Entities.dll": {}
+        }
+      },
+      "GIH.Interfaces/1.0.0": {
+        "dependencies": {
+          "GIH.Entities": "1.0.0"
+        },
+        "runtime": {
+          "GIH.Interfaces.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GIH.Services/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GIH.Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GIH.Interfaces/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
