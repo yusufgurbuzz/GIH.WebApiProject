@@ -12,7 +12,6 @@ public static class ServicesExtensions
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
     }
-
     public static void ConfigureRepositoryManager(this IServiceCollection services)
     {
         services.AddScoped<IRepositoryManager,RepositoryManager>();

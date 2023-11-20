@@ -1,4 +1,5 @@
 ﻿using GIH.Entities;
+using GIH.Entities.DTOs;
 using GIH.Interfaces.Managers;
 using GIH.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ namespace GIH.WebApi.Controllers;
 public class PersonController : ControllerBase
 {
     private readonly IServiceManager _serviceManager;
+   
     public PersonController(IServiceManager serviceManager)
     {
         _serviceManager = serviceManager;
@@ -44,12 +46,11 @@ public class PersonController : ControllerBase
         }
         catch (Exception ex)
         {
-            throw new Exception(ex.Message);
+            return BadRequest("Bu mail adresi veya kullanıcı adı kullanılmaktadır" );
         }
-        
     }
     [HttpPut ("{id:int}")]
-    public IActionResult UpdatePersonById(int id,Person person)
+    public IActionResult UpdatePersonById(int id,PersonDto person)
     {
         try
         {
@@ -62,7 +63,7 @@ public class PersonController : ControllerBase
         }
         catch (Exception ex)
         {
-            throw new Exception(ex.Message);
+           return BadRequest(ex.Message);
         }
     }
     [HttpPut("UpdatePassword")]
@@ -87,10 +88,8 @@ public class PersonController : ControllerBase
             return StatusCode(500, $"Bir hata oluştu: {ex.Message}");
         }
     }
-    
-    
     [HttpDelete ("{id:int}")]
-    public IActionResult DeleteProductById(int id)
+    public IActionResult DeletePersonById(int id)
     {
         try
         {
@@ -99,10 +98,18 @@ public class PersonController : ControllerBase
         }
         catch (Exception ex)
         {
-            throw new Exception(ex.Message);
+            return BadRequest(ex.Message);
         }
     }
-    
-    
-    
+    [HttpPost("Login")]
+    public IActionResult LoginPerson(string nickName, string password)
+    {
+        var userLogin =  _serviceManager.PersonService.GetPersonByNickName(nickName);
+        
+        if (userLogin is not null && PasswordHasher.VerifyPassword(password, userLogin.PersonPassword, userLogin.PasswordSalt))
+        {
+            return Ok(new { Message = "Login successful" });
+        }
+        return BadRequest();
+    }
 }

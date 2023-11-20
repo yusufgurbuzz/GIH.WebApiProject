@@ -7,6 +7,7 @@ public interface IPersonRepository
     IQueryable<Person> GetPerson();
     Person GetPersonById(int id);
     Person GetPersonByEmail(string email);
+    Person GetPersonByNickName(string nickName);
     void CreatePerson(Person person);
     void UpdatePerson(Person person);
     void UpdatePersonPassword(Person person);

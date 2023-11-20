@@ -9,7 +9,8 @@ public class Person
     public string PersonSurname { get; set; } 
     public string PersonEmail { get; set; }
     public string PersonPassword { get; set; }
-    public int PersonPhoneNumber { get; set; }
+    public string PersonNickName { get; set; }
+    public string PersonPhoneNumber { get; set; }
     public int RoleId { get; set; }
     public string PasswordSalt { get; set; }
 }

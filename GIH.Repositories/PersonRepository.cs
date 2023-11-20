@@ -13,7 +13,6 @@ public class PersonRepository:RepositoryBase<Person>,IPersonRepository
     {
         return FindAll();
     }
-
     public Person GetPersonById(int id)
     {
         return FindByCondition(b => b.PersonId.Equals(id)).SingleOrDefault();
@@ -21,6 +20,11 @@ public class PersonRepository:RepositoryBase<Person>,IPersonRepository
     public Person GetPersonByEmail(string email)
     {
         return FindByCondition(b => b.PersonEmail.Equals(email)).SingleOrDefault();
+    }
+
+    public Person GetPersonByNickName(string nickName)
+    {
+        return FindByCondition(b => b.PersonNickName.Equals(nickName)).SingleOrDefault();
     }
 
     public void CreatePerson(Person person)

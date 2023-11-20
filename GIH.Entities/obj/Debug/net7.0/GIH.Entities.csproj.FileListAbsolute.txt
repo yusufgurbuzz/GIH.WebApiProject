@@ -9,3 +9,14 @@ C:\Users\yusuf.gurbuz\Desktop\GIHWebApiPorject\GIH.WebApi\GIH.Entities\obj\Debug
 C:\Users\yusuf.gurbuz\Desktop\GIHWebApiPorject\GIH.WebApi\GIH.Entities\obj\Debug\net7.0\refint\GIH.Entities.dll
 C:\Users\yusuf.gurbuz\Desktop\GIHWebApiPorject\GIH.WebApi\GIH.Entities\obj\Debug\net7.0\GIH.Entities.pdb
 C:\Users\yusuf.gurbuz\Desktop\GIHWebApiPorject\GIH.WebApi\GIH.Entities\obj\Debug\net7.0\ref\GIH.Entities.dll
+C:\Users\yusuf.gurbuz\Desktop\GIHWebApiProject\GIH.WebApi\GIH.Entities\bin\Debug\net7.0\GIH.Entities.deps.json
+C:\Users\yusuf.gurbuz\Desktop\GIHWebApiProject\GIH.WebApi\GIH.Entities\bin\Debug\net7.0\GIH.Entities.dll
+C:\Users\yusuf.gurbuz\Desktop\GIHWebApiProject\GIH.WebApi\GIH.Entities\bin\Debug\net7.0\GIH.Entities.pdb
+C:\Users\yusuf.gurbuz\Desktop\GIHWebApiProject\GIH.WebApi\GIH.Entities\obj\Debug\net7.0\GIH.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yusuf.gurbuz\Desktop\GIHWebApiProject\GIH.WebApi\GIH.Entities\obj\Debug\net7.0\GIH.Entities.AssemblyInfoInputs.cache
+C:\Users\yusuf.gurbuz\Desktop\GIHWebApiProject\GIH.WebApi\GIH.Entities\obj\Debug\net7.0\GIH.Entities.AssemblyInfo.cs
+C:\Users\yusuf.gurbuz\Desktop\GIHWebApiProject\GIH.WebApi\GIH.Entities\obj\Debug\net7.0\GIH.Entities.csproj.CoreCompileInputs.cache
+C:\Users\yusuf.gurbuz\Desktop\GIHWebApiProject\GIH.WebApi\GIH.Entities\obj\Debug\net7.0\GIH.Entities.dll
+C:\Users\yusuf.gurbuz\Desktop\GIHWebApiProject\GIH.WebApi\GIH.Entities\obj\Debug\net7.0\refint\GIH.Entities.dll
+C:\Users\yusuf.gurbuz\Desktop\GIHWebApiProject\GIH.WebApi\GIH.Entities\obj\Debug\net7.0\GIH.Entities.pdb
+C:\Users\yusuf.gurbuz\Desktop\GIHWebApiProject\GIH.WebApi\GIH.Entities\obj\Debug\net7.0\ref\GIH.Entities.dll

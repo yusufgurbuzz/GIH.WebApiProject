@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 using GIH.Entities;
+using GIH.Entities.DTOs;
 using GIH.Interfaces.Managers;
 using GIH.Interfaces.Services;
 
@@ -29,10 +30,15 @@ public class PersonService : IPersonService
     {
         return _repositoryManager.PersonRepository.GetPersonByEmail(email);
     }
-    
-    public bool UpdatePassword(string personEmail, string currentPassword, string newPassword)
+
+    public Person GetPersonByNickName(string nickName)
     {
-        var person = _repositoryManager.PersonRepository.GetPersonByEmail(personEmail);
+        return _repositoryManager.PersonRepository.GetPersonByNickName(nickName);
+    }
+
+    public bool UpdatePassword(string email, string currentPassword, string newPassword)
+    {
+        var person = _repositoryManager.PersonRepository.GetPersonByEmail(email);
         if (person is null)
         {
             throw new InvalidOperationException("Böyle bir kullanıcı yok");
@@ -55,9 +61,11 @@ public class PersonService : IPersonService
 
     public void CreatePerson(Person person)
     {
-        if (_repositoryManager.PersonRepository.GetPersonByEmail(person.PersonEmail) is not null)
+        var personEmail = _repositoryManager.PersonRepository.GetPersonByEmail(person.PersonEmail);
+        var personNickName = _repositoryManager.PersonRepository.GetPersonByNickName(person.PersonNickName);
+        if ( (personEmail is not null)|| personNickName is not null)
         {
-            throw new InvalidOperationException("Bu mail adresi kullanılmaktadır.");
+            throw new InvalidOperationException("Bu mail adresi vey kullanıcı adı kullanılmaktadır.");
         }
         
         var (hashedPassword, salt) = PasswordHasher.HashPassword(person.PersonPassword);
@@ -69,6 +77,7 @@ public class PersonService : IPersonService
             PersonEmail = person.PersonEmail,
             PersonPassword = hashedPassword,
             PersonPhoneNumber = person.PersonPhoneNumber,
+            PersonNickName = person.PersonNickName,
             RoleId = person.RoleId,
             PasswordSalt = salt
         };
@@ -77,7 +86,7 @@ public class PersonService : IPersonService
         _repositoryManager.Save();
     }
 
-    public void UpdatePersonById(int id, Person person)
+    public void UpdatePersonById(int id, PersonDto person)
     {
         var entity = _repositoryManager.PersonRepository.GetPersonById(id);
         

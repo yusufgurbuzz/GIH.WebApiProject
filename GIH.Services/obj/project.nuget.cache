@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "nTCn2NYOu1Y41BrY0lqOoZ7YnkE8+tSNiV24e670tbNKhwPU/7z9A3120fTc4pE0sfXmeGzMTjpIVxB+FCmKMA==",
+  "dgSpecHash": "ZqtPpxzwCZ5qPoI8qpUnMZZRM3jvjSsfcLAzej5o92mC0Y4BAMQJiJNtRrxllvQnREUGp+XTyOn7kxvEDTfb4Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\yusuf.gurbuz\\Desktop\\GIHWebApiProject\\GIH.WebApi\\GIH.Services\\GIH.Services.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\yusuf.gurbuz\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\yusuf.gurbuz\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\yusuf.gurbuz\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\yusuf.gurbuz\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\yusuf.gurbuz\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\yusuf.gurbuz\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\yusuf.gurbuz\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
