@@ -12,5 +12,5 @@ public class Person
     public string PersonNickName { get; set; }
     public string PersonPhoneNumber { get; set; }
     public int RoleId { get; set; }
-    public string PasswordSalt { get; set; }
+    public string? PasswordSalt { get; set; }
 }
