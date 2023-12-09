@@ -30,5 +30,27 @@ public class AutoMapperProfiles : Profile
                     opt.MapFrom(src => src.PersonId);
                 }
             );
+
+        CreateMap<Restaurant, RestaurantDto>().ForMember(dest => dest.restaurantId,
+            opt =>
+            {
+                opt.MapFrom(src => src.restaurantId);
+            }
+        ).ForMember(dest => dest.restaurantName,
+            opt =>
+            {
+                opt.MapFrom(src => src.restaurantName);
+            }
+        ).ForMember(dest => dest.restaurantAdress,
+            opt =>
+            {
+                opt.MapFrom(src => src.restaurantAdress);
+            }
+        ).ForMember(dest => dest.restaurantPhoneNumber,
+            opt =>
+            {
+                opt.MapFrom(src => src.restaurantNumber);
+            }
+        );
     }
 }

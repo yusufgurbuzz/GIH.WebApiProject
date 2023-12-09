@@ -65,7 +65,7 @@ public class PersonService : IPersonService
         var personNickName = _repositoryManager.PersonRepository.GetPersonByNickName(person.PersonNickName);
         if ( (personEmail is not null)|| personNickName is not null)
         {
-            throw new InvalidOperationException("Bu mail adresi vey kullanıcı adı kullanılmaktadır.");
+            throw new InvalidOperationException("Bu mail adresi veya kullanıcı adı kullanılmaktadır.");
         }
         
         var (hashedPassword, salt) = PasswordHasher.HashPassword(person.PersonPassword);
