@@ -11,4 +11,5 @@ public class Restaurant
     public string restaurantNumber { get; set; }
     public int RoleId { get; set; }
     public string? PasswordSalt { get; set; }
+
 }

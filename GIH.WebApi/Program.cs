@@ -1,3 +1,6 @@
+using GIH.Interfaces.Managers;
+using GIH.Interfaces.Services;
+using GIH.Services;
 using GIH.Services.Helper;
 using GIH.WebApi.Extension;
 
@@ -13,6 +16,10 @@ builder.Services.ConfigurePostgreSqlContext(builder.Configuration);
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
+builder.Services.ConfigureJWT(builder.Configuration);
+builder.Services.AddScoped<IPersonValidateService,PersonValidateService>();
+builder.Services.AddScoped<IRestaurantValidateService,RestaurantValidateService>();
+builder.Services.AddScoped<IAuthenticationService,AuthenticationService>();
 
 var app = builder.Build();
 

@@ -1,7 +1,9 @@
 ﻿using GIH.Entities;
 using GIH.Entities.DTOs;
 using GIH.Interfaces.Managers;
+using GIH.Interfaces.Services;
 using GIH.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GIH.WebApi.Controllers;
@@ -10,10 +12,14 @@ namespace GIH.WebApi.Controllers;
 public class PersonController : ControllerBase
 {
     private readonly IServiceManager _serviceManager;
-   
-    public PersonController(IServiceManager serviceManager)
+    private readonly IAuthenticationService _authService;
+    private readonly IPersonValidateService _personValidateService;
+    public PersonController(IServiceManager serviceManager,IPersonValidateService personValidateService, 
+        IAuthenticationService authService)
     {
         _serviceManager = serviceManager;
+        _personValidateService = personValidateService;
+        _authService = authService;
     }
     [HttpGet]
     public IActionResult GetPerson()
@@ -101,15 +107,16 @@ public class PersonController : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+    //[Authorize] tokenli girilen yerlere koy
     [HttpPost("Login")]
-    public IActionResult LoginPerson(string nickName, string password)
+    public IActionResult LoginPerson(PersonForAuthenticationDto personForAutDto)
     {
-        var userLogin =  _serviceManager.PersonService.GetPersonByNickName(nickName);
-        
-        if (userLogin is not null && PasswordHasher.VerifyPassword(password, userLogin.PersonPassword, userLogin.PasswordSalt))
+        if (_personValidateService.ValidatePerson(personForAutDto.Username, personForAutDto.Password))
         {
-            return Ok(new { Message = "Login successful" });
+            // Kullanıcı doğrulama başarılı, JWT token oluşturulur.
+            var token = _authService.GenerateJwtToken(personForAutDto.Username);
+            return Ok(new { token });
         }
-        return BadRequest();
+        return Unauthorized();
     }
 }

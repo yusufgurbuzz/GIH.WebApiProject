@@ -6,5 +6,6 @@ public interface IRepositoryManager
 {
     IPersonRepository PersonRepository { get; }
     IRestaurantRepository RestaurantRepository { get; }
+    IAdvertRepository AdvertRepository {get;}
     void Save();
 }

@@ -52,5 +52,51 @@ public class AutoMapperProfiles : Profile
                 opt.MapFrom(src => src.restaurantNumber);
             }
         );
+
+        CreateMap<Advert, AdvertDto>().ForMember(dest => dest.AdvertName,
+            opt =>
+            {
+                opt.MapFrom(src => src.AdvertName);
+            }
+        ).ForMember(dest => dest.AdvertDescription,
+            opt =>
+            {
+                opt.MapFrom(src => src.AdvertDescription);
+            }
+        ).ForMember(dest => dest.AdvertKilo,
+            opt =>
+            {
+                opt.MapFrom(src => src.AdvertKilo);
+            }
+        ).ForMember(dest => dest.AdvertDate,
+            opt =>
+            {
+                opt.MapFrom(src => src.AdvertDate);
+            }
+        );
+        
+        CreateMap<Person, PersonForAuthenticationDto>().ForMember(dest => dest.Username,
+            opt =>
+            {
+                opt.MapFrom(src => src.PersonNickName);
+            }
+        ).ForMember(dest => dest.Password,
+            opt =>
+            {
+                opt.MapFrom(src => src.PersonPassword);
+            }
+        );
+        
+        CreateMap<Restaurant, RestaurantForAuthentication>().ForMember(dest => dest.Username,
+            opt =>
+            {
+                opt.MapFrom(src => src.restaurantNickname);
+            }
+        ).ForMember(dest => dest.Password,
+            opt =>
+            {
+                opt.MapFrom(src => src.restaurantPassword);
+            }
+        );
     }
 }

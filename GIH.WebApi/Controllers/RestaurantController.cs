@@ -1,6 +1,7 @@
 ﻿using GIH.Entities;
 using GIH.Entities.DTOs;
 using GIH.Interfaces.Managers;
+using GIH.Interfaces.Services;
 using GIH.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,10 +11,14 @@ namespace GIH.WebApi.Controllers;
 public class RestaurantController : Controller
 {
     private readonly IServiceManager _serviceManager;
-  
-    public RestaurantController(IServiceManager serviceManager)
+    private readonly IAuthenticationService _authService;
+    private readonly IRestaurantValidateService _personValidateService;
+    public RestaurantController(IServiceManager serviceManager,IRestaurantValidateService personValidateService, 
+        IAuthenticationService authService)
     {
         _serviceManager = serviceManager;
+        _personValidateService = personValidateService;
+        _authService = authService;
     }
     [HttpGet]
     public IActionResult GetPerson()
@@ -112,15 +117,88 @@ public class RestaurantController : Controller
         }
     }
     [HttpPost("Login")]
-    public IActionResult LoginPerson(string nickName, string password)
+    public IActionResult LoginRestaurant(RestaurantForAuthentication restaurantForAut)
     {
-        var userLogin = _serviceManager.RestaurantService.GetRestaurantByNickName(nickName);
-        
-        if (userLogin is not null && PasswordHasher.VerifyPassword(password, userLogin.restaurantPassword, userLogin.PasswordSalt))
+        if (_personValidateService.ValidateRestaurant(restaurantForAut.Username, restaurantForAut.Password))
         {
-            return Ok(new { Message = "Login successful" });
+            // Kullanıcı doğrulama başarılı, JWT token oluşturulur.
+            var token = _authService.GenerateJwtToken(restaurantForAut.Username);
+            return Ok(new { token });
         }
-        return BadRequest();
+        return Unauthorized();
     }
+
+    [HttpGet ("advert")]
+    public IActionResult GetAdvert()
+    {
+        var adverts = _serviceManager.AdvertService.GetAdvert();
+        return Ok(adverts);
+    }
+    [HttpGet("AdvertId")]
+    public IActionResult GetAdvertById(int id)
+    {
+        var advert = _serviceManager.AdvertService.GetAdvertById(id);
+        
+        if (advert is null)
+        {
+            return NotFound();
+        }
+        return Ok(advert);
+    }
+    [HttpGet("AdvertAdress")]
+    public IActionResult GetAdvertByAdress(string adress)
+    {
+        var advert = _serviceManager.AdvertService.GetAdvertByAdress(adress);
+        
+        if (advert is null)
+        {
+            return NotFound();
+        }
+        return Ok(advert);
+    }
+    [HttpPost("AdvertAdd")]
+    public IActionResult CreateAdvert([FromBody] Advert advert)
+    {
+            if (advert is null)
+            {
+                return BadRequest();
+            }
+            _serviceManager.AdvertService.CreateAdvert(advert);
+            return Ok(advert);
+        
+        
+    }
+    [HttpPut ("AdvertUpdate")]
+    public IActionResult UpdateAdvertById(int id,AdvertDto advertDto)
+    {
+        try
+        {
+            if (advertDto is null)
+            {
+                return BadRequest();
+            }
+            _serviceManager.AdvertService.UpdateAdvertById(id,advertDto);
+            return NoContent();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+  [HttpDelete ("AdvertDelete")]
+    public IActionResult DeleteAdvertById(int id)
+    {
+        try
+        {
+            _serviceManager.AdvertService.DeleteAdvertById(id);
+            return NoContent();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
     
 }
