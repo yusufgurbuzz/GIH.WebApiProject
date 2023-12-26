@@ -44,7 +44,7 @@ public class RestaurantService : IRestaurantService
         var restaurantNickname = _repositoryManager.RestaurantRepository.GetRestaurantByNickName(restaurant.restaurantNickname);
         if ( restaurantEmail is not null || restaurantNickname is not null)
         {
-            throw new InvalidOperationException("Bu mail adresi vey kullanıcı adı kullanılmaktadır.");
+            throw new InvalidOperationException("This e-mail address or username is used.");
         }
         
         var (hashedPassword, salt) = PasswordHasher.HashPassword(restaurant.restaurantPassword);

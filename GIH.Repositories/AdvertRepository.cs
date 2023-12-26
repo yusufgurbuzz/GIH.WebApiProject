@@ -31,20 +31,25 @@ public class AdvertRepository : RepositoryBase<Advert>, IAdvertRepository
         return FindAll();
     }
 
-    public IQueryable<Advert> GetAdvertByAdress(string adress)
+    public IEnumerable<Advert> GetAdvertByAdress(string adress)
     {
-        // Adrese sahip restoranların Id'lerini çek
-        var restaurantIds = _dbContext.Restaurants
+        //adrese göre restorantIdsini aldık.
+        var restaurantSameAdress = _context.Restaurants
             .Where(r => r.restaurantAdress == adress)
-            .Select(r => r.restaurantId)
             .ToList();
-        
-        // Restoran Id'leri ile ilişkilendirilmiş ilanları çek
-        var adverts = _dbContext.Adverts
-            .Where(a => restaurantIds.Contains(a.RestaurantId));
+        //RestorantId lerini listeye koyduk.
+        var restaurantIds = restaurantSameAdress.Select(r => r.restaurantId).ToList();
 
-        return adverts.AsQueryable();
+        //İlanlardaki restorantIdleri karşılaştırıp aynı olanları listeye aldık.
+        var adverts = _context.Adverts
+            .Where(i => restaurantIds.Contains(i.RestaurantId))
+            .ToList();
 
+        // Veritabanından alınan verileri dilimledik
+        adverts = adverts.Where(i => restaurantIds.Contains(i.RestaurantId))
+                         .ToList();
+
+        return adverts;
     }
 
     public Advert GetAdvertById(int id)

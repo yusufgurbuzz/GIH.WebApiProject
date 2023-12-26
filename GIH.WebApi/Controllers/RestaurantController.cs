@@ -128,7 +128,7 @@ public class RestaurantController : Controller
         return Unauthorized();
     }
 
-    [HttpGet ("advert")]
+    [HttpGet ("Advert")]
     public IActionResult GetAdvert()
     {
         var adverts = _serviceManager.AdvertService.GetAdvert();

@@ -6,7 +6,7 @@ public interface IAdvertRepository
 {
     IQueryable<Advert> GetAdvert();
     Advert GetAdvertById(int id);
-    IQueryable<Advert> GetAdvertByAdress(string adress);
+    IEnumerable<Advert> GetAdvertByAdress(string adress);
     void CreateAdvert(Advert advert);
     void UpdateAdvert(Advert advert);
     void DeleteAdvert(Advert advert);

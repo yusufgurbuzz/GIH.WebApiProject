@@ -31,7 +31,7 @@ public class RestaurantRepository : RepositoryBase<Restaurant>, IRestaurantRepos
 
     public Restaurant GetRestaurantByNickName(string nickname)
     {
-        return FindByCondition(b => b.restaurantNickname.Equals(nickname)).SingleOrDefault();
+        return FindByCondition(b => b.restaurantNickname.Equals(nickname)).FirstOrDefault();
     }
 
     public void CreateRestaurant(Restaurant restaurant)

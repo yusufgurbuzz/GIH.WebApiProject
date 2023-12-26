@@ -14,18 +14,28 @@ public class RestaurantValidateService : IRestaurantValidateService
     }
     public bool ValidateRestaurant(string nickname, string password)
     {
-        var validUsername = _repositoryManager.RestaurantRepository.GetRestaurantByNickName(nickname).restaurantNickname;
-        var validPassword = _repositoryManager.RestaurantRepository.GetRestaurantByNickName(nickname).restaurantPassword;
-        var validPasswordSalt = _repositoryManager.RestaurantRepository.GetRestaurantByNickName(nickname).PasswordSalt;
-        var validVerifyPassword = PasswordHasher.VerifyPassword(password, validPassword, validPasswordSalt);
+        var restaurant = _repositoryManager.RestaurantRepository.GetRestaurantByNickName(nickname);
 
-        if (nickname == validUsername && validVerifyPassword is true)
-        {
-            return true;
-        }
-        else
+        // Null kontrolü ekleyin
+        if (restaurant == null)
         {
             return false;
         }
+
+        var validUsername = restaurant.restaurantNickname;
+        var validPassword = restaurant.restaurantPassword;
+        var validPasswordSalt = restaurant.PasswordSalt;
+        
+        if (validUsername != null && validPassword != null && validPasswordSalt != null)
+        {
+            var validVerifyPassword = PasswordHasher.VerifyPassword(password, validPassword, validPasswordSalt);
+
+            if (nickname == validUsername && validVerifyPassword)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

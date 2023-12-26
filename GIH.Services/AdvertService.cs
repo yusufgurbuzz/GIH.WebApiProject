@@ -24,7 +24,7 @@ public class AdvertService : IAdvertService
         return _repositoryManager.AdvertRepository.GetAdvertById(id);
     }
 
-    public IQueryable<Advert> GetAdvertByAdress(string address)
+    public IEnumerable<Advert> GetAdvertByAdress(string address)
     {
         return _repositoryManager.AdvertRepository.GetAdvertByAdress(address);
     } 
