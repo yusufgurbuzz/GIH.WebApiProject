@@ -15,8 +15,7 @@ public class RestaurantValidateService : IRestaurantValidateService
     public bool ValidateRestaurant(string nickname, string password)
     {
         var restaurant = _repositoryManager.RestaurantRepository.GetRestaurantByNickName(nickname);
-
-        // Null kontrolü ekleyin
+        
         if (restaurant == null)
         {
             return false;

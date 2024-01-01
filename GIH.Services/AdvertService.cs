@@ -28,6 +28,10 @@ public class AdvertService : IAdvertService
     {
         return _repositoryManager.AdvertRepository.GetAdvertByAdress(address);
     } 
+    public IEnumerable<Advert> GetAdvertByRestaurantId(int id)
+    {
+        return _repositoryManager.AdvertRepository.GetAdvertByRestaurantId(id);
+    } 
     public void CreateAdvert(Advert advert)
     {
           if (advert is null)

@@ -10,7 +10,6 @@ public class Advert
     public int AdvertKilo {get; set;}
     public string AdvertDescription {get;set;}
     public DateTime? AdvertDate {get;set;}
- 
     public int RestaurantId {get;set;}
    
    

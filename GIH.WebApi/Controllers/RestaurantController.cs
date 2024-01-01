@@ -156,6 +156,18 @@ public class RestaurantController : Controller
         }
         return Ok(advert);
     }
+    [HttpGet("AdvertForRestaurantId")]
+    public IActionResult GetAdvertByRestaurantId(int id)
+    {
+        var advert = _serviceManager.AdvertService.GetAdvertByRestaurantId(id);
+        
+        if (advert is null)
+        {
+            return NotFound();
+        }
+        return Ok(advert);
+    }
+    
     [HttpPost("AdvertAdd")]
     public IActionResult CreateAdvert([FromBody] Advert advert)
     {
