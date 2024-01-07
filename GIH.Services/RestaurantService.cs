@@ -77,7 +77,7 @@ public class RestaurantService : IRestaurantService
             throw new Exception($"Restaurant is null");
         }
 
-        entity.restaurantId = restaurantDto.restaurantId;
+        //entity.restaurantId = restaurantDto.restaurantId;
         entity.restaurantName = restaurantDto.restaurantName;
         entity.restaurantNumber = restaurantDto.restaurantPhoneNumber;
         entity.restaurantAdress = restaurantDto.restaurantAdress;

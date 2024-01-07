@@ -100,7 +100,7 @@ public class PersonService : IPersonService
             throw new Exception($"Person is null");
         }
 
-        entity.PersonId = person.PersonId;
+        //entity.PersonId = person.PersonId;
         entity.PersonName = person.PersonName;
         entity.PersonSurname = person.PersonSurname;
         entity.PersonPhoneNumber = person.PersonPhoneNumber;

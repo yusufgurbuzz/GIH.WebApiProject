@@ -7,7 +7,7 @@ namespace GIH.Services;
 
 public class PersonValidateService : IPersonValidateService
 {
-   
+
     private readonly IRepositoryManager _repositoryManager;
 
     public PersonValidateService(IRepositoryManager repositoryManager)
@@ -17,20 +17,28 @@ public class PersonValidateService : IPersonValidateService
 
     public bool ValidatePerson(string nickname, string password)
     {
-       
-        var validUsername = _repositoryManager.PersonRepository.GetPersonByNickName(nickname).PersonNickName;
-        var validPassword = _repositoryManager.PersonRepository.GetPersonByNickName(nickname).PersonPassword;
-        var validPasswordSalt = _repositoryManager.PersonRepository.GetPersonByNickName(nickname).PasswordSalt;
-        var validVerifyPassword = PasswordHasher.VerifyPassword(password, validPassword, validPasswordSalt);
+        
+        var person = _repositoryManager.PersonRepository.GetPersonByNickName(nickname);
 
-        if (nickname == validUsername && validVerifyPassword is true)
-        {
-            return true;
-        }
-        else
+        if (person == null)
         {
             return false;
         }
+
+        var validUsername = person.PersonNickName;
+        var validPassword = person.PersonPassword;
+        var validPasswordSalt = person.PasswordSalt;
+
+        if (validUsername != null && validPassword != null && validPasswordSalt != null)
+        {
+            var validVerifyPassword = PasswordHasher.VerifyPassword(password, validPassword, validPasswordSalt);
+
+            if (nickname == validUsername && validVerifyPassword)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
-    
 }

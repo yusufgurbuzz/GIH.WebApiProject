@@ -111,12 +111,21 @@ public class PersonController : ControllerBase
     [HttpPost("Login")]
     public IActionResult LoginPerson(PersonForAuthenticationDto personForAutDto)
     {
-        if (_personValidateService.ValidatePerson(personForAutDto.Username, personForAutDto.Password))
+        try
         {
-            // Kullanıcı doğrulama başarılı, JWT token oluşturulur.
-            var token = _authService.GenerateJwtToken(personForAutDto.Username);
-            return Ok(new { token });
+            if (_personValidateService.ValidatePerson(personForAutDto.Username, personForAutDto.Password))
+            {
+                var token = _authService.GenerateJwtToken(personForAutDto.Username);
+                return Ok(new { token });
+            }
+            else
+            {
+                return Unauthorized();
+            }
         }
-        return Unauthorized();
+        catch (Exception ex)
+        {
+            return StatusCode(500, "Internal Server Error");
+        }
     }
 }
